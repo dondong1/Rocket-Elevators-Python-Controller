@@ -1,6 +1,6 @@
-for elevatorID = 1
-for floorRequestButtonID = 1
-for callButtonID = 1
+elevatorID = 1
+floorRequestButtonID = 1
+callButtonID = 1
 
 class Column(object) :
     def _init_(_id, _status, _amountOfFloors, _amountOfElevators): 
@@ -17,15 +17,15 @@ class Column(object) :
     
    #-=1-=1-=1-=1-=1-=1-=1-=1-=1-=1-=1- Method -=1-=1-=1-=1-=1-=1-=1-=1-=1-=1-""""
     def createCallButtons(_amountOfFloors):
-        for    buttonFloor = 1
-        for (i in range(_amountOfFloors): 
+            buttonFloor = 1
+        for (i < range(_amountOfFloors): 
             if(buttonFloor < _amountOfFloors): #If it's not the last floor"""
             return callButton = new CallButton(callButtonID, 'OFF', buttonFloor, 'Up')#id, status, floor, direction""""
             self.callButtonsList.push(callButon)
             callButtonID +=1
             
             if(buttonFloor > _amountOfFloors): #If it is not the first floor"""
-            for callButton = new CallButton(callButton, 'OFF', buttonFloor, 'Down')#id, status, floor, direction""""
+            callButton = new CallButton(callButton, 'OFF', buttonFloor, 'Down')#id, status, floor, direction""""
             self.callButtonsList.push(callButton)
             callButtonID +=1
             
@@ -33,8 +33,8 @@ class Column(object) :
     
 
     def createElevators(_amountOfFloors, _amountOfElevators):
-        for(for i = 0; i < _amountOfElevators; i+=1): 
-            for elevator = new Elevator(elevatorID, 'idle', _amountOfFloors, 1)#id, status, amountOfFloors, currentFloor""""
+        for i < range(_amountOfElevators): 
+            elevator = new Elevator(elevatorID, 'idle', _amountOfFloors, 1)#id, status, amountOfFloors, currentFloor""""
             self.elevatorList.push(elevator)
             elevatorID+=1
         
@@ -43,17 +43,17 @@ class Column(object) :
 
    #Simulate when a user press a button outside the elevator""""
     def requestElevator(_floor, _direction): 
-        for elevator = self.findElevator(_floor, _direction);
+        elevator = self.findElevator(_floor, _direction);
         elevator.floorRequestList.push(_floor);
         sortFloorList();
         operateDoors();
     
 
     def findElevator(requestFloor, requestDirection): 
-        for bestElevatorInformations = 
+            bestElevatorInformations = {
             bestElevator: null,
             bestScore: 5,
-            referenceGap: 100000000
+            referenceGap: 100000000 }
         
         self.elevatorList.forEach(elevator => 
            #The elevator is at my floor and going in the direction I want"""""
@@ -115,9 +115,9 @@ class Elevator(object)
         self.createFloorRequestButtons(_amountOfFloors)
     
     def createFloorRequestButtons(_amountOfFloors):
-        for buttonFloor = 1
-        for (for i =0; i < _amountOfFloors; i+=1): 
-            for floorRequestButton = new FloorRequestButton(floorReqeustButtonID, 'OFF', buttonFloor)#id, status, floor"""
+         buttonFloor = 1
+        for i < range(_amountOfFloors): 
+            floorRequestButton = new FloorRequestButton(floorReqeustButtonID, 'OFF', buttonFloor)#id, status, floor"""
             self.floorRequestButtonsList.push(floorRequestButton)
             buttonFloor+=1
             floorReqeustButtonID+=1
@@ -133,7 +133,7 @@ class Elevator(object)
 
     def move(): 
         while (self.floorRequestList.length !=0) 
-            for destination = self.floorRequestList[0]
+            destination = self.floorRequestList[0]
             self.status = 'moving'
             if(self.currentFloor < destination):
                 self.direction = 'Up'
@@ -207,46 +207,46 @@ class Elevator(object)
 
 
 """"========================Scenario 1 =======================""""
-for column = new column(1, 'online', 10, 2)#id, status, amountOfFloors, amountOfElevators"""
+column = new column(1, 'online', 10, 2)#id, status, amountOfFloors, amountOfElevators"""
 column.elevatorsList[0].currentFloor =2
 column.elevatorsList[1].currentFloor =6
-for elevator=colunm.requestElvator(3, 'Up')
+elevator=colunm.requestElvator(3, 'Up')
 elevator.requestFloor(7)
 """"======================== End Scenario 1 =======================""""
 
 """" ==================================Scenario 2===================""""
-for column = new column(1, 'online', 10, 2)
+column = new column(1, 'online', 10, 2)
 column.elevatorsList[0].currentFloor =10
 column.elevatorsList[1].currentFloor =3
 
 """"Part1"""
-for elevator=column.requestElevator(1, 'Up')
+elevator=column.requestElevator(1, 'Up')
 elevator.requestFloor(6)
 
 """"Part2""""
-for elevator=column.requestElevator(3, 'Up')
+elevator=column.requestElevator(3, 'Up')
 elevator.requestFloor(5)
 
 """"Part3"""
-for elevator=column.requestElevator(9, 'Down')
+elevator=column.requestElevator(9, 'Down')
 elevator.requestFloor(2)
 
 """" ==================================End Scenario 2=================="""
 
 """"=================================Scenario 3========================""""
-for column = new column(1, 'online', 10, 2)
+column = new column(1, 'online', 10, 2)
 column.elevatorList[0].currentFloor= 10
 column.elevatorList[1].currentFloor = 3
 column.elevatorList[1].staus = 'Up'
 column.elevatorList[1].destination = 6
 
 """"Part 1""""
-for.elevator=column.requestElevator(3, 'Down')
+elevator=column.requestElevator(3, 'Down')
 elevator.requestFloor(2)
 
 
 """"Part 2""""
-for.elevator=column.requestElevator(10, 'Down')
+elevator=column.requestElevator(10, 'Down')
 elevator.requestFloor(3)
 
 """"==================================End Scenario 3===================="""
