@@ -1,6 +1,6 @@
-let elevatorID = 1
-let floorRequestButtonID = 1
-let callButtonID = 1
+for elevatorID = 1
+for floorRequestButtonID = 1
+for callButtonID = 1
 
 class Column(object) :
     def _init_(_id, _status, _amountOfFloors, _amountOfElevators): 
@@ -15,83 +15,83 @@ class Column(object) :
         self.createCallButtons(_amountOfFloors)
     
     
-    """"----------------------- Method ---------------------""""
+   #-=1-=1-=1-=1-=1-=1-=1-=1-=1-=1-=1- Method -=1-=1-=1-=1-=1-=1-=1-=1-=1-=1-""""
     def createCallButtons(_amountOfFloors):
-        let buttonFloor = 1
-        for (let i = 0; i < _amountOfFloors; i++) 
-            if(buttonFloor < _amountOfFloors)  """"If it's not the last floor"""
-            let callButton = new CallButton(callButtonID, 'OFF', buttonFloor, 'Up') """"id, status, floor, direction""""
+        for    buttonFloor = 1
+        for (i in range(_amountOfFloors): 
+            if(buttonFloor < _amountOfFloors): #If it's not the last floor"""
+            return callButton = new CallButton(callButtonID, 'OFF', buttonFloor, 'Up')#id, status, floor, direction""""
             self.callButtonsList.push(callButon)
-            callButtonID ++
+            callButtonID +=1
             
-            if(buttonFloor > _amountOfFloors)  """"If it is not the first floor"""
-            let callButton = new CallButton(callButton, 'OFF', buttonFloor, 'Down') """"id, status, floor, direction""""
+            if(buttonFloor > _amountOfFloors): #If it is not the first floor"""
+            for callButton = new CallButton(callButton, 'OFF', buttonFloor, 'Down')#id, status, floor, direction""""
             self.callButtonsList.push(callButton)
-            callButtonID ++
+            callButtonID +=1
             
         
     
 
     def createElevators(_amountOfFloors, _amountOfElevators):
-        for(let i = 0; i < _amountOfElevators; i++) 
-            let elevator = new Elevator(elevatorID, 'idle', _amountOfFloors, 1) """"id, status, amountOfFloors, currentFloor""""
+        for(for i = 0; i < _amountOfElevators; i+=1): 
+            for elevator = new Elevator(elevatorID, 'idle', _amountOfFloors, 1)#id, status, amountOfFloors, currentFloor""""
             self.elevatorList.push(elevator)
-            elevatorID++
+            elevatorID+=1
         
     
 
 
-    """"Simulate when a user press a button outside the elevator""""
+   #Simulate when a user press a button outside the elevator""""
     def requestElevator(_floor, _direction): 
-        let elevator = self.findElevator(_floor, _direction);
+        for elevator = self.findElevator(_floor, _direction);
         elevator.floorRequestList.push(_floor);
         sortFloorList();
         operateDoors();
     
 
     def findElevator(requestFloor, requestDirection): 
-        let bestElevatorInformations = 
+        for bestElevatorInformations = 
             bestElevator: null,
             bestScore: 5,
             referenceGap: 100000000
         
         self.elevatorList.forEach(elevator => 
-            """"The elevator is at my floor and going in the direction I want"""""
-            if(requestedFloor == elevator.currentFloor && elevator.status == 'stopped' && requestedDirection == elevator.direction) 
+           #The elevator is at my floor and going in the direction I want"""""
+            if(requestedFloor == elevator.currentFloor and elevator.status == 'stopped' and requestedDirection == elevator.direction):
                 bestElevatorInformations = self.checkIfElevatorIsBetter(1, elevator, bestElevatorInformations, requestedFloor)
             
-            """"The elevator is lower than me, is coming up and I want to go up"""""
-            else if(requestedFloor > elevator.currentFloor && elevator.direction == 'Up' && requestedDirection == elevator.dreiction) 
+           #The elevator is lower than me, is coming up and I want to go up"""""
+            elif(requestedFloor > elevator.currentFloor and elevator.direction == 'Up' and requestedDirection == elevator.direction):
                 bestElevatorInformations = self.checkIfElevatorIsBetter(2, elevator, bestElevatorInformations, requestedFloor)
             
-            """"The elevator is higher than me, is coming down and I want to go down"""""
-            else if (requestedFloor < elevator.currentFloor && elevator.direction == 'Down' && requestedDirection == elevator.direction) 
+           #The elevator is higher than me, is coming down and I want to go down"""""
+            elif (requestedFloor < elevator.currentFloor and elevator.direction == 'Down' and requestedDirection == elevator.direction): 
                 bestElevatorInformations = self.checkIfElevatorIsBetter(2, elevator, bestElevatorInformations, requestedFloor)
             
-            """"The elevator is idle""""
-            else if (elevator.status == 'idle') 
+           #The elevator is idle""""
+            elif (elevator.status == 'idle'): 
                 bestElevatorInformations = self.checkIfElevatorIsBetter(3, elevator, bestElevatorInformations, requestedFloor)
                
-            """"The elevator is not available, but still could take the call if nothing better is found """
+           #The elevator is not available, but still could take the call if nothing better is found """
             else 
                 bestElevatorInformations = self.checkIfElevatorIsBetter(4, elevator, bestElevatorInformations, requestedFloor)
             
-        """"bestElevator = bestElevatorInformations.bestElevator
-        """"bestScore = bestElevatorInformations.bestScore
-        """"referenceGap = bestElevatorInformations.referenceGap""""
+       #bestElevator = bestElevatorInformations.bestElevator
+       #bestScore = bestElevatorInformations.bestScore
+       #referenceGap = bestElevatorInformations.referenceGap""""
         );
         return bestElevatorInformations.bestElevator;
 
     
 
     def checkIfElevatorIsBetter(scoreToCheck, newElevator, bestElevatorInformations, floor): 
-        if (scoreToCheck < bestElevatorInformations.bestScore) 
+        if (scoreToCheck < bestElevatorInformations.bestScore): 
             bestElevatorInformations.bestScore = scoreToCheck
             bestElevatorInformations.bestElevator = newElevator
             bestElevatorInformations.referenceGap = Math.abs(newElevator.currentFloor - floor)
-          else if (bestElevatorInformations.bestScore == scoreToCheck) 
-            let gap = Math.abs(newElevator.currentFloor - floor)
-            if(bestElevatorInformations.referenceGap > gap) 
+          elif (bestElevatorInformations.bestScore == scoreToCheck):
+            for gap = Math.abs(newElevator.currentFloor - floor)
+            if(bestElevatorInformations.referenceGap > gap): 
                 bestElevatorInformations.bestScore = scoreToCheck
                 bestElevatorInformations.bestElevator = newElevator
                 bestElevatorInformations.referenceGap = gap 
@@ -103,7 +103,7 @@ class Column(object) :
 """" Column"""
 
 class Elevator(object) 
-    def (_id, _status, _amountOfFloors, _currentFloor): 
+    def __init__ (_id, _status, _amountOfFloors, _currentFloor): 
         self.ID = _id
         self.status = _status
         self.amountOfFloors = _amountOfFloors
@@ -115,15 +115,15 @@ class Elevator(object)
         self.createFloorRequestButtons(_amountOfFloors)
     
     def createFloorRequestButtons(_amountOfFloors):
-        let buttonFloor = 1
-        for (let i =0; i < _amountOfFloors; i++) 
-            let floorRequestButton = new FloorRequestButton(floorReqeustButtonID, 'OFF', buttonFloor) """"id, status, floor"""
+        for buttonFloor = 1
+        for (for i =0; i < _amountOfFloors; i+=1): 
+            for floorRequestButton = new FloorRequestButton(floorReqeustButtonID, 'OFF', buttonFloor)#id, status, floor"""
             self.floorRequestButtonsList.push(floorRequestButton)
-            buttonFloor++
-            floorReqeustButtonID++
+            buttonFloor+=1
+            floorReqeustButtonID+=1
         
     
-    """"Simulate when a user press a button inside the elevator """"
+   #Simulate when a user press a button inside the elevator#
     def requestFlorr(floor): 
         self.floorRequestList.push(floor)
         self.sortFloorList
@@ -133,17 +133,17 @@ class Elevator(object)
 
     def move(): 
         while (self.floorRequestList.length !=0) 
-            let destination = self.floorRequestList[0]
+            for destination = self.floorRequestList[0]
             self.status = 'moving'
-            if(self.currentFloor < destination) 
+            if(self.currentFloor < destination):
                 self.direction = 'Up'
                 while (self.currentFloor < destination) 
-                    self.currentFloor++
+                    self.currentFloor+=1
                 
-             else if (self.currentFloor > destination) 
+             elif (self.currentFloor > destination):
                 self.direction = 'Down'
                 while (self.currentFloor < destination) 
-                    self.currentFloor--
+                    self.currentFloor-=1
                 
             
             self.status = 'stopped'
@@ -151,7 +151,7 @@ class Elevator(object)
         
     
     def sortFloorList(): 
-        if (self.direction == 'Up') 
+        if (self.direction == 'Up'): 
             self.floorRequestButtonsList.sort(function(a, b) return a-b);
          else 
             self.floorRequestList.sort(function(a, b) return b-a);
@@ -160,25 +160,25 @@ class Elevator(object)
 
     def operateDoors(): 
         self.doorStatus = 'opened'
-        """"WAIT 5 seconds"""
-        if (self.overweight) 
+       #WAIT 5 seconds"""
+        if (self.overweight): 
             self.door.status = 'closing'
-            if (self.door.obstruction) 
+            if (self.door.obstruction): 
                 self.door.status = 'closed'
              else 
-                """"WAIT: for the person to clear the way"""
+               #WAIT: for the person to clear the way"""
                 self.door.obstruction = false
                 self.operateDoors()
             
          else 
             while (self.overweight) 
-                """"Activate overweight alarm, and wait for someone to get out""""
+               #Activate overweight alarm, and wait for someone to get out""""
                 self.overweight = false
             
             self.operateDoors()
         
        
-  """" Elevator""""
+ # Elevator""""
  
  class CallButton(object): 
     def _init_ (_id, _status, _floor, _direction) 
@@ -188,7 +188,7 @@ class Elevator(object)
          self.direction = _direction
      
  
-    """"Simulate when a user press a button inside the elevator """"
+   #Simulate when a user press a button inside the elevator#
     def requestFloor() 
         class FloorRequestButton 
         constructor (_id, _status, _floor) 
@@ -207,48 +207,46 @@ class Elevator(object)
 
 
 """"========================Scenario 1 =======================""""
-let column = new column(1, 'online', 10, 2) """"id, status, amountOfFloors, amountOfElevators"""
-
+for column = new column(1, 'online', 10, 2)#id, status, amountOfFloors, amountOfElevators"""
 column.elevatorsList[0].currentFloor =2
 column.elevatorsList[1].currentFloor =6
-
-let elevator=colunm.requestElvator(3, 'Up')
+for elevator=colunm.requestElvator(3, 'Up')
 elevator.requestFloor(7)
 """"======================== End Scenario 1 =======================""""
 
 """" ==================================Scenario 2===================""""
-let column = new column(1, 'online', 10, 2)
+for column = new column(1, 'online', 10, 2)
 column.elevatorsList[0].currentFloor =10
 column.elevatorsList[1].currentFloor =3
 
 """"Part1"""
-let elevator=column.requestElevator(1, 'Up')
+for elevator=column.requestElevator(1, 'Up')
 elevator.requestFloor(6)
 
 """"Part2""""
-let elevator=column.requestElevator(3, 'Up')
+for elevator=column.requestElevator(3, 'Up')
 elevator.requestFloor(5)
 
 """"Part3"""
-let elevator=column.requestElevator(9, 'Down')
+for elevator=column.requestElevator(9, 'Down')
 elevator.requestFloor(2)
 
 """" ==================================End Scenario 2=================="""
 
 """"=================================Scenario 3========================""""
-let column = new column(1, 'online', 10, 2)
+for column = new column(1, 'online', 10, 2)
 column.elevatorList[0].currentFloor= 10
 column.elevatorList[1].currentFloor = 3
 column.elevatorList[1].staus = 'Up'
 column.elevatorList[1].destination = 6
 
 """"Part 1""""
-let.elevator=column.requestElevator(3, 'Down')
+for.elevator=column.requestElevator(3, 'Down')
 elevator.requestFloor(2)
 
 
 """"Part 2""""
-let.elevator=column.requestElevator(10, 'Down')
+for.elevator=column.requestElevator(10, 'Down')
 elevator.requestFloor(3)
 
 """"==================================End Scenario 3===================="""
