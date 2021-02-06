@@ -18,10 +18,10 @@ class Column():
         buttonFloor = 1
         for i in range(self.amountOfFloors):
             if buttonFloor < self.amountOfFloors :
-                self.callButtonsList.append(CallButton(i +1, 'OFF', buttonFloor +1 , 'Up'))
+                self.callButtonsList.append(CallButton(i +1, 'OFF', buttonFloor +1 , 'up'))
             
             if buttonFloor > 1 :
-                self.callButtonsList.append(CallButton(i +1 , 'OFF', buttonFloor +1 , 'Down'))
+                self.callButtonsList.append(CallButton(i +1 , 'OFF', buttonFloor +1 , 'down'))
             
 
     def createElevators(self): 
@@ -47,10 +47,10 @@ class Column():
             if requestedFloor == elevator.currentFloor and elevator.status == 'stopped' and requestedDirection == elevator.direction : 
                 bestElevatorInformations = self.checkIfElevatorIsBetter(1, elevator, bestElevatorInformations, requestedFloor)
             
-            elif requestedFloor > elevator.currentFloor and elevator.direction == 'Up' and requestedDirection == elevator.direction :
+            elif requestedFloor > elevator.currentFloor and elevator.direction == 'up' and requestedDirection == elevator.direction :
                 bestElevatorInformations = self.checkIfElevatorIsBetter(2, elevator, bestElevatorInformations, requestedFloor)
             
-            elif requestedFloor < elevator.currentFloor and elevator.direction == 'Down' and requestedDirection == elevator.direction : 
+            elif requestedFloor < elevator.currentFloor and elevator.direction == 'down' and requestedDirection == elevator.direction : 
                 bestElevatorInformations = self.checkIfElevatorIsBetter(2, elevator, bestElevatorInformations, requestedFloor)
             
             elif elevator.status == 'idle' :
@@ -104,12 +104,12 @@ class Elevator(object):
             destination = self.floorRequestList[0]
             self.status = 'moving'
             if self.currentFloor < destination: 
-                self.direction = 'Up'
+                self.direction = 'up'
                 while self.currentFloor < destination : 
                     self.currentFloor+=1
                     print("       Elevator"+ str(self.ID) + " move to current floor " + str(self.currentFloor))
             elif self.currentFloor > destination :
-                self.direction = 'Down'
+                self.direction = 'down'
                 while self.currentFloor > destination : 
                     self.currentFloor-=1
                     print("       Elevator"+ str(self.ID) + " move to current floor " + str(self.currentFloor))
@@ -117,7 +117,7 @@ class Elevator(object):
             self.floorRequestList.pop()
         
     def sortFloorList(self):
-        if  self.direction == 'Up' :
+        if  self.direction == 'up' :
             self.floorRequestList.sort()
          
         else:
@@ -173,7 +173,7 @@ def scenario1():
     
     print()
     print("Person 1: (elevator 1 is expected)")
-    elevator = columnScenario1.requestElevator(3, 'Up') #parameters (requestedFloor, buttonDirection.UP/DOWN)
+    elevator = columnScenario1.requestElevator(3, 'up') #parameters (requestedFloor, buttonDirection.up/down)
     elevator.requestFloor(7) #parameters (requestedFloor, requestedColumn)
     print("==================================")
 
@@ -187,17 +187,17 @@ def scenario2():
     
     print()
     print("Person 1: (elevator 2 is expected)")
-    elevator = columnScenario2.requestElevator(1, 'Up')
+    elevator = columnScenario2.requestElevator(1, 'up')
     elevator.requestFloor(6)
     print("----------------------------------")
     print()
     print("Person 2: (elevator 2 is expected)")
-    elevator3 = columnScenario2.requestElevator(3, 'Up')
+    elevator3 = columnScenario2.requestElevator(3, 'up')
     elevator3.requestFloor(5)
     print("----------------------------------")
     print()
     print("Person 3: (elevator 1 is expected)")
-    elevator1 = columnScenario2.requestElevator(9, 'Down')
+    elevator1 = columnScenario2.requestElevator(9, 'down')
     elevator1.requestFloor(2)
     print("==================================")
 
@@ -208,12 +208,12 @@ def scenario3():
     columnScenario3 = Column(1, 'online', 10, 2)
     columnScenario3.elevatorsList[0].floor = 10
     columnScenario3.elevatorsList[1].floor = 3
-    columnScenario3.elevatorsList[1].status = 'Up'
+    columnScenario3.elevatorsList[1].status = 'up'
 
     
     print()
     print("Person 1: (elevator 1 is expected)")
-    elevator = columnScenario3.requestElevator(3, 'Down')
+    elevator = columnScenario3.requestElevator(3, 'down')
     elevator.requestFloor(2)
     print("----------------------------------")    
     print()
@@ -223,13 +223,13 @@ def scenario3():
     columnScenario3.elevatorsList[1].status = 'idle'
 
     print("Person 2: (elevator 2 is expected)")
-    elevator1 = columnScenario3.requestElevator(10, 'Down')
+    elevator1 = columnScenario3.requestElevator(10, 'down')
     elevator1.requestFloor(3)
     print("==================================")
 
 
 ''' -------- CALL SCENARIOS -------- '''
-scenario1()
-scenario2()
-scenario3()
+#scenario1()
+#scenario2()
+#scenario3()
 
